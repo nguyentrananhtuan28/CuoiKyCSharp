@@ -1,0 +1,28 @@
+﻿<aside>
+    <div id="sidebar" class="nav-collapse">
+        <!-- sidebar menu start-->
+        <div class="leftside-navigation">
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li>
+                    <a class="active" href="@Url.Action("Index","Home")">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="@Url.Action("Index","UserAccount", new { page = 1 })">
+                        <i class="fa fa-user"></i>
+                        <span>Quản Lý người dùng</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="@Url.Action("Index","Product", new { page = 1 })">
+                        <i class="fa fa-book"></i>
+                        <span>Quản Lý Sản Phẩm</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- sidebar menu end-->
+    </div>
+</aside>

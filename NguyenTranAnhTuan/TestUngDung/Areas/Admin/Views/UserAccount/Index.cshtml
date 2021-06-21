@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ModelEF.Model.UserAccount>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Header{
+    Quản Lý người dùng
+}
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PassWord)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassWord)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a href="#">Xem chi tiết </a>|
+                <a href="#">Sửa </a>|
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID, page = @ViewBag.page })
+            </td>
+        </tr>
+    }
+
+</table>
+<ul class="pagination" style="justify-content: center;align-items: center;">
+    @{
+        int Previous = @ViewBag.page - 1;
+        int Next = @ViewBag.page + 1;
+        if (Previous == 0) Previous = 1;
+        if (Next > ViewBag.maxpage) Next = ViewBag.maxpage;
+        <li class="page-item"><a class="page-link" href="@Url.Action("Index","UserAccount", new { page = Previous })">Previous</a></li>
+        for (int i = 1; i <= @ViewBag.maxpage; i++)
+        {
+            <li class="page-item"><a class="page-link" href="@Url.Action("Index","UserAccount", new { page = i })">@i</a></li>
+        }
+        <li class="page-item"><a class="page-link" href="@Url.Action("Index","UserAccount", new { page = Next })">Next</a></li>
+    }
+</ul>

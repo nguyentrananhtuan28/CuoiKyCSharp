@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ModelEF.Model.Product>
+@using ModelEF;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Header{
+    Quản Lý Sản Phẩm
+}
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Tên Sản Phẩm
+        </th>
+        <th>
+            Đơn Giá
+        </th>
+        <th>
+            Số Lượng
+        </th>
+        <th>
+            LoaiSP_ID
+        </th>
+        <th>
+            Thao tác
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Common.FormatCr(@Html.DisplayFor(modelItem => item.UnitCost).ToString()) đ
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td>
+                @Html.ActionLink("Xem chi tiết ", "Details", new { id = item.ID })|
+                <a href="#">Sửa </a>|
+                <a href="#">Xóa </a>|
+            </td>
+        </tr>
+    }
+
+</table>

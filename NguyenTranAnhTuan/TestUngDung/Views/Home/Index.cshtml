@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ModelEF.Model.Product>
+@using ModelEF;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="">
+    <h1>Nguyễn Trần Anh Tuấn</h1>
+    <p class="lead">Shop Giày T&T hân hạnh được phục vụ quý khách chúc quý khách xem hàng một cách vui vẻ và không quậu khi mà giá thành quá mắt. </p>
+    <p><a href="#" class="btn btn-primary btn-lg">Khuyến mãi lớn &raquo;</a></p>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3" style=" width: 20% !important; border: 1px solid #3333331c; border-radius: 10px;">
+            <div class="card">
+                <img src="@Html.DisplayFor(modelItem => item.Image)" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                    <p class="card-text">Giá Bán : @Common.FormatCr(@Html.DisplayFor(modelItem => item.UnitCost).ToString()) đ</p>
+                    <p class="card-text">Số lượng: @Html.DisplayFor(modelItem => item.Quantity)</p>
+                    <a href="#" class="btn btn-primary" style="width:100%">Mua Ngay</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
